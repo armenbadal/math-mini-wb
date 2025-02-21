@@ -1,0 +1,67 @@
+\font\hysix="GHEAGrapalat:mapping=tex-text" at 6pt
+\font\hysixi="GHEAGrapalat/I:mapping=tex-text" at 6pt
+\font\hysixb="GHEAGrapalat/B:mapping=tex-text" at 6pt
+
+\font\hyeight="GHEAGrapalat:mapping=tex-text" at 8pt
+\font\hyeighti="GHEAGrapalat/I:mapping=tex-text" at 8pt
+\font\hyeightb="GHEAGrapalat/B:mapping=tex-text" at 8pt
+
+\font\hyten="GHEAGrapalat:mapping=tex-text" at 10pt
+\font\hyteni="GHEAGrapalat/I:mapping=tex-text" at 10pt
+\font\hytenb="GHEAGrapalat/B:mapping=tex-text" at 10pt
+
+\def\tenpoint{%
+    \def\am{\fam0\hyten}%
+    \textfont0=\tenrm \scriptfont0=\sevenrm \scriptscriptfont0=\fiverm
+    \textfont1=\teni \scriptfont1=\seveni \scriptscriptfont1=\fivei
+    \textfont\itfam=\hyteni \scriptfont\itfam=\hyeighti 
+      \scriptscriptfont\itfam=\hysixi \def\it{\fam\itfam\hyteni}%
+    \textfont\bffam=\hytenb \scriptfont\bffam=\hyeightb
+      \scriptscriptfont\bffam=\hysixb \def\bf{\fam\bffam\hytenb}%
+    \normalbaselineskip=16pt
+    \normalbaselines\am}
+
+\font\symbol="DejaVu Sans Mono" at 12pt
+
+\pdfpagewidth=105mm
+\pdfpageheight=148.5mm
+
+\hsize=90mm
+\vsize=133mm
+
+\hoffset=-17.9mm
+\voffset=-22.4mm
+
+\parindent=0pt
+\nopagenumbers
+
+
+\newcount\problemcount \problemcount=0
+\def\problem{%
+  \ifnum\problemcount>0\solution\fi
+  \vfill\eject\tenpoint%
+  \advance\problemcount by1\null}
+
+\newdimen\freespace
+\def\solution{\bigskip
+{\symbol\offinterlineskip
+  \freespace\vsize \advance\freespace-\pagetotal
+  \special{color push rgb 0.5 0.6 0.7}
+    \centerline{┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐}
+  \loop
+    \centerline{├─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┤}
+    \advance\freespace by -15pt
+  \ifdim\freespace>60pt\repeat
+    \centerline{└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘}
+  \special{color pop}}
+  \medskip\line{Պատասխան՝~\dotfill}}
+
+\tolerance=4000
+\frenchspacing
+\hyphenchar\hyten="058A % տողադարձի նշանը
+\tenpoint
+\uselanguage{armenian}
+
+\hyphenation{ձեռ-նոց-ներ պա-րա-գա-ներ արկ-ղից պատ-րաս-տե-ին 
+յու-րա-քանչ-յու-րում շր-ջա-զգեստ գործ-վածք ու-ղար-կե-ին}
+
