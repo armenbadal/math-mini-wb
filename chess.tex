@@ -1,30 +1,28 @@
-\font\chessten=''SkakNew-Diagram'' at 14pt
+\font\chessten="SkakNew-Diagram" at 14pt
+
+
 
 Experiment 1:
+\bigskip
+{\bgroup
+\def\letter#1{\hss{\sevenrm #1}\hss}
+\def\a{\letter a} \def\b{\letter b} \def\c{\letter c} 
+\def\d{\letter d} \def\e{\letter e} \def\f{\letter f} 
+\def\g{\letter g} \def\h{\letter h}
+\chessten\offinterlineskip
+\strut\halign{\raise5pt\hbox{{\sevenrm #~}}&#&#&#&#&#&#&#&#\cr
+&\multispan{8}\hrulefill\cr
+8&0&Z&0&Z&0&Z&0&Z\vrule\cr
+7&Z&0&Z&0&Z&0&Z&0\vrule\cr
+6&0&Z&0&Z&0&Z&0&Z\vrule\cr
+5&Z&0&Z&0&Z&0&Z&0\vrule\cr
+4&0&Z&0&Z&0&Z&0&Z\vrule\cr
+3&Z&0&Z&0&Z&0&Z&0\vrule\cr
+2&0&Z&0&Z&0&Z&0&Z\vrule\cr
+1&S&N&A&0&Z&0&Z&0\vrule\cr
+&\a&\b&\c&\d&\e&\f&\g&\h\cr}\egroup}
 
-%{\chessten ABCDEFGHIJKLMNOPQRSTUVWXYZ}
-\centerline{\vbox{\offinterlineskip\chessten
-\def\bk{Z} \def\wh{0}
-\halign{\vrule#&#&#&#&#&#&#&#\vrule\cr
-\noalign{\hrule}\cr
-\wh& \bk & \wh &Q& \wh & \bk & \wh & \bk \cr
-o&p&o&p&o&p&o&p\cr
-\wh & \bk & \wh & \bk & \wh & \bk & \wh & \bk \cr
-\bk & \wh & \bk & \wh & \bk & \wh & \bk & \wh \cr
-\wh & \bk & \wh & \bk & \wh & \bk & \wh & \bk \cr
-\bk & \wh & \bk & \wh & \bk & \wh & \bk & \wh \cr
-P&O&P&O&P&O&P&O\cr
-\bk & \wh & \bk & \wh & \bk & \wh & \bk & \wh \cr
-\noalign{\hrule}
-}}}
 
-Experiment 2:
-
-\input etude-a.tex
-
-Experiment 3:
-
-\input etude-b.tex
 
 
 \bye

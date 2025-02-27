@@ -1,0 +1,19 @@
+\font\symchess="[merifont.ttf]" at 10pt
+\font\arm="[chess_merida_unicode.ttf]"
+
+%\symchess
+\arm
+\newcount\tar \tar=57599
+
+\loop
+  \advance\tar 1 
+  \leftline{{\rm\the\tar\ }\char\tar}
+\ifnum\tar<58377\repeat
+
+\char61553, \char61554
+
+\char"FF
+
+
+\bye
+
