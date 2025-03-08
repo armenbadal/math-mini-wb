@@ -1,19 +1,14 @@
-\font\symchess="[merifont.ttf]" at 10pt
-\font\arm="[chess_merida_unicode.ttf]"
+\font\symchess="[chess_merida_unicode.ttf]" at 32pt
 
-%\symchess
-\arm
-\newcount\tar \tar=57599
 
-\loop
-  \advance\tar 1 
-  \leftline{{\rm\the\tar\ }\char\tar}
-\ifnum\tar<58377\repeat
+Example 1:
 
-\char61553, \char61554
+\input etude-a.tex
 
-\char"FF
+\bigskip
+Example 2:
 
+\input etude-b.tex
 
 \bye
 
