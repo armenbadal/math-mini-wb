@@ -1,0 +1,44 @@
+
+\newbox\etude 
+\setbox\etude=\vbox{
+\halign{
+\strut\vrule#&#&#&#&#\vrule\cr
+\noalign{\hrule}
+&a&b&c&\cr
+&d&e&f&\cr
+&g&h&i&\cr
+&a&b&c&\cr
+&d&e&f&\cr
+&g&h&i&\cr
+&a&b&c&\cr
+&d&e&f&\cr
+&g&h&i&\cr
+&a&b&c&\cr
+&d&e&f&\cr
+&g&h&i&\cr
+\noalign{\hrule}}\vskip1cm\null}
+
+
+\newbox\lines 
+\setbox\lines=\vbox{\hsize=6cm
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+This is a text This is a text This is a text 
+}
+
+\hbox{\copy\etude\vbox{\hbox to1cm{}}\copy\lines}
+
+\bye

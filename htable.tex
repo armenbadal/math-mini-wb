@@ -1,41 +1,31 @@
 {\bf Example 1:}
-\bigskip
-
-
-\halign{\strut%
-\vrule\hbox to5mm{#}&
-\vrule\hbox to5mm{#}&
-\vrule\hbox to5mm{#}&
-\vrule\hbox to5mm{#}
-\vrule\cr
-\noalign{\hrule}
-&&&\cr
-\noalign{\hrule}
-&&&\cr
-\noalign{\hrule}
-&&&\cr
-\noalign{\hrule}
-&&&\cr
-\noalign{\hrule}}
-
 
 \vskip2cm
 
-{\offinterlineskip
+{
+\special{color push rgb 0.5 0.6 0.7}
+\def\cx#1{\vrule\hbox to5mm{\vbox to 5mm{#1}}}
+\offinterlineskip
 \halign{%
-\vrule#&\hbox to5mm{\vbox to 5mm{#}}&
-\vrule\hbox to5mm{\vbox to 5mm{#}}&
-\vrule\hbox to5mm{\vbox to 5mm{#}}&
-\vrule\hbox to5mm{\vbox to 5mm{#}}&
-#\vrule\cr
+\cx{#}&
+\cx{#}&
+\cx{#}&
+\cx{#}&
+\cx{#}&
+\cx{#}&
+\cx{#}&
+\cx{#}
+\vrule\cr
 \noalign{\hrule}
-&&&&&\cr
+&&&&&&&\cr
 \noalign{\hrule}
-&&&&&\cr
+&&&&&&&\cr
 \noalign{\hrule}
-&&&&&\cr
+&&&&&&&\cr
 \noalign{\hrule}
-&&&&&\cr
-\noalign{\hrule}}}
+&&&&&&&\cr
+\noalign{\hrule}}
+\special{color pop}
+}
 
 \bye
