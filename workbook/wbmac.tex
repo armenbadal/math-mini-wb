@@ -1,68 +1,92 @@
-\font\hysix="GHEAGrapalat:mapping=tex-text" at 6pt
-\font\hysixi="GHEAGrapalat/I:mapping=tex-text" at 6pt
-\font\hysixb="GHEAGrapalat/B:mapping=tex-text" at 6pt
+\input eplain.tex
 
-\font\hyeight="GHEAGrapalat:mapping=tex-text" at 8pt
-\font\hyeighti="GHEAGrapalat/I:mapping=tex-text" at 8pt
-\font\hyeightb="GHEAGrapalat/B:mapping=tex-text" at 8pt
-
-\font\hyten="GHEAGrapalat:mapping=tex-text" at 10pt
-\font\hyteni="GHEAGrapalat/I:mapping=tex-text" at 10pt
-\font\hytenb="GHEAGrapalat/B:mapping=tex-text" at 10pt
-
-\def\tenpoint{%
-    \def\am{\fam0\hyten}%
-    \textfont0=\tenrm \scriptfont0=\sevenrm \scriptscriptfont0=\fiverm
-    \textfont1=\teni \scriptfont1=\seveni \scriptscriptfont1=\fivei
-    \textfont\itfam=\hyteni \scriptfont\itfam=\hyeighti 
-      \scriptscriptfont\itfam=\hysixi \def\it{\fam\itfam\hyteni}%
-    \textfont\bffam=\hytenb \scriptfont\bffam=\hyeightb
-      \scriptscriptfont\bffam=\hysixb \def\bf{\fam\bffam\hytenb}%
-    \normalbaselineskip=16pt
-    \normalbaselines\am}
-
-\font\symbol="DejaVu Sans Mono" at 12pt
-
+% A6 էջի չափերը
 \pdfpagewidth=105mm
 \pdfpageheight=148.5mm
 
-\hsize=90mm
-\vsize=133mm
+\hsize=79mm
+\vsize=115mm
 
-\hoffset=-17.9mm
-\voffset=-17.9mm
-%\voffset=-22.4mm
+\hoffset=-12.4mm
+\voffset=-12.4mm
 
+% տեքստի տպատառերը
+\font\armtenrm="GHEAGrapalat:mapping=tex-text" at 10pt
+\font\armninerm="GHEAGrapalat:mapping=tex-text" at 9pt
+\font\armsevenrm="GHEAGrapalat:mapping=tex-text" at 7pt
+\font\armsixrm="GHEAGrapalat:mapping=tex-text" at 6pt
+\font\armfiverm="GHEAGrapalat:mapping=tex-text" at 5pt
+
+\font\armtenit="GHEAGrapalat/I:mapping=tex-text" at 10pt
+\font\armnineit="GHEAGrapalat/I:mapping=tex-text" at 9pt
+\font\armsevenit="GHEAGrapalat/I:mapping=tex-text" at 7pt
+\font\armsixit="GHEAGrapalat/I:mapping=tex-text" at 6pt
+\font\armfiveit="GHEAGrapalat/I:mapping=tex-text" at 5pt
+
+\font\armtenbf="GHEAGrapalat/B:mapping=tex-text" at 10pt
+\font\armninebf="GHEAGrapalat/B:mapping=tex-text" at 9pt
+\font\armsevenbf="GHEAGrapalat/B:mapping=tex-text" at 7pt
+\font\armsixbf="GHEAGrapalat/B:mapping=tex-text" at 6pt
+\font\armfivebf="GHEAGrapalat/B:mapping=tex-text" at 5pt
+
+\def\tenpoint{\def\hy{\fam0\armtenrm}%
+  \textfont0=\armtenrm \scriptfont0=\armsevenrm \scriptscriptfont0=\armfiverm
+  \def\it{\fam\itfam\armtenit} \textfont\itfam=\armtenit
+  \def\bf{\fam\bffam\armtenbf} \textfont\bffam=\armtenbf
+    \scriptfont\bffam=\armsevenbf \scriptscriptfont\bffam=\armfivebf
+  \normalbaselineskip=14pt
+  \setbox\strutbox=\hbox{\vrule height8.5pt depth5.5pt width 0pt}%
+  \normalbaselines\hy}
+
+\def\ninepoint{\def\hy{\fam0\armninerm}%
+  \textfont0=\armninerm \scriptfont0=\armsixrm \scriptscriptfont0=\armfiverm
+  \def\it{\fam\itfam\armnineit} \textfont\itfam=\armnineit
+  \def\bf{\fam\bffam\armninebf} \textfont\bffam=\armninebf
+    \scriptfont\bffam=\armsixbf \scriptscriptfont\bffam=\armfivebf
+  \normalbaselineskip=12.6pt
+  \setbox\strutbox=\hbox{\vrule height8pt depth4.6pt width 0pt}%
+  \normalbaselines\hy}
+
+\uselanguage{armenian}
 \parindent=0pt
-\nopagenumbers
-
+\baselineskip=14pt
+\frenchspacing
+\tolerance=4000
+\hyphenchar\armtenrm="058A % տողադարձի նշանը
 
 \newcount\problemcount \problemcount=0
-\def\problem{%
-  \ifnum\problemcount>0\solution\fi
-  \vfill\eject\tenpoint%
-  \advance\problemcount by1\null}
+\def\problem{\vfill\eject%
+  \advance\problemcount by1%
+  {\bf \the\problemcount.}~}
 
+\newwrite\ansf
+\immediate\openout\ansf=\jobname.answers.tex
+\def\answer#1{\immediate\write\ansf{\the\problemcount. {\noexpand\it #1}}%
+  \immediate\write\ansf{}%
+  \medskip\mathgrid\medskip\line{Պատասխան՝\dotfill\null}}
+
+\newdimen\onerow \onerow5mm
 \newdimen\freespace
-\def\solution{\bigskip
-{\symbol\offinterlineskip
-  \freespace\vsize \advance\freespace-\pagetotal
-  \special{color push rgb 0.5 0.6 0.7}
-    \centerline{┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐}
+\newbox\mathcell
+\setbox\mathcell=\hbox{\vbox{\hrule width \onerow height 0pt}}
+\def\cell{\vrule\copy\mathcell}
+\def\mathgrid{%
+  \freespace\vsize
+  \advance\freespace by -\pagetotal
+  \advance\freespace by -4\onerow
+  \def\rows{\noalign{\hrule}}
   \loop
-    \centerline{├─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┼─┤}
-    \advance\freespace by -15pt
-  \ifdim\freespace>60pt\repeat
-    \centerline{└─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘}
-  \special{color pop}}
-  \medskip\line{Պատասխան՝~\dotfill}}
+    \edef\rows{\rows &&&&&&&&&&&&&&\cr\noalign{\hrule}}
+    \advance\freespace by -\onerow
+  \ifnum\freespace>0\repeat
+  \bigskip\special{color push rgb 0.5 0.5 0.5}
+  \centerline{\vbox{\halign{
+    \cell##&\cell##&\cell##&\cell##&%
+    \cell##&\cell##&\cell##&\cell##&%
+    \cell##&\cell##&\cell##&\cell##&%
+    \cell##&\cell##&\cell##\vrule height\onerow\cr
+    \rows}}}\medskip\special{color pop}}
 
-\tolerance=4000
-\frenchspacing
-\hyphenchar\hyten="058A % տողադարձի նշանը
 \tenpoint
-\uselanguage{armenian}
 
-\hyphenation{ձեռ-նոց-ներ պա-րա-գա-ներ արկ-ղից պատ-րաս-տե-ին 
-յու-րա-քանչ-յու-րում շր-ջա-զգեստ գործ-վածք ու-ղար-կե-ին}
-
+\endinput
