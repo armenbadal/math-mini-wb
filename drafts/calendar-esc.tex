@@ -1,0 +1,61 @@
+
+\font\hybig="GHEA Mariam/BI" at 28pt
+\font\hyfourteen="GHEA Mariam/I" at 14pt
+\font\hyten="GHEA Mariam/I" at 10pt
+
+
+\pdfpagewidth=105mm
+\pdfpageheight=148.5mm
+
+\hsize=80mm
+\vsize=133mm
+
+\hoffset=-12.5mm
+\voffset=-12.5mm
+%\voffset=-22.4mm
+
+\parindent=0pt
+\nopagenumbers
+
+
+
+\centerline{\vbox{\halign{#&\hss#\hss\cr
+\smash{\hbox{\lower 12pt\hbox to1.6cm{\hss\hybig 23\hss}}} & {\hyfourteen սեպտեմբեր} \cr
+ & {\hyten september сентябрь}\cr}}}
+\line{\hrulefill}
+
+
+\def\hymonthname{\relax}
+\def\enmonthname{\relax}
+\def\rumonthname{\relax}
+
+\def\հունվար{1}
+\def\փետրվար{2}
+\def\մարտ{3}
+\def\ապրիլ{4}
+\def\մայիս{5}
+\def\հունիս{6}
+\def\հուլիս{7}
+\def\օգոստոս{8}
+\def\սեպտեմբեր{9}
+\def\հոկտեմբեր{10}
+\def\նոյեմբեր{11}
+\def\դեկտեմբեր{12}
+
+\def\rumonth#1{
+  \ifcase\csname #1\endcsname\or январь\or февраль\or март
+  \or апрель\or май\or июнь\or июль\or август\or сентябрь%
+  \or октябрь\or ноябрь\or декабрь\fi}
+\def\enmonth#1{
+  \ifcase\csname #1\endcsname\or january\or february\or march%
+  \or april\or may\or june\or july\or august\or septemver%
+  \or october\or november\or december\fi}
+\def\setmonth#1{%
+  \global\def\hymonthname{#1}
+  \global\def\enmonthname{\enmonth{#1}}
+  \global\def\rumonthname{\rumonth{#1}}}
+
+\hyten
+\rumonth{օգոստոս}, \rumonth{մարտ}
+
+\bye
