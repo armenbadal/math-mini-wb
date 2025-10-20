@@ -1,0 +1,13 @@
+
+\newdimen\myheight \myheight\vsize
+
+\newcount\linecount \linecount=0
+\loop
+  \advance\myheight by -\baselineskip 
+  %\leftline{\the\linecount, \the\myheight} 
+  \advance\linecount by1
+\ifnum\myheight>\baselineskip\repeat
+
+lines = \the\linecount
+
+\bye

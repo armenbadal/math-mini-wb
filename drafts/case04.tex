@@ -7,26 +7,61 @@
 
 \hoffset=-12.4mm
 \voffset=-12.4mm
+\newdimen\halfheight \halfheight=0.50\vsize
 
 \parindent=0pt
 
-\def\problem{%\vfill\eject
-  \noindent{\bf 1.}~}
-\def\answer#1{{\it #1}, }
+% մաթեմատիկական վանդակներ
+\newdimen\onerow \onerow5mm
+\newdimen\gridheight
+\def\mathgrid{%
+  \def\rows{\noalign{\hrule}}
+  \loop
+    \edef\rows{\rows &&&&&&&&&&&&&&\cr\noalign{\hrule}}
+    \advance\gridheight by -\onerow
+  \ifnum\gridheight>\onerow\repeat
+  \bigskip\special{color push rgb 0.5 0.5 0.5}
+  \def\cell{\vrule\hbox{\vbox{\hrule width \onerow height 0pt}}}
+  \centerline{\vbox{\halign{
+    \cell##&\cell##&\cell##&\cell##&%
+    \cell##&\cell##&\cell##&\cell##&%
+    \cell##&\cell##&\cell##&\cell##&%
+    \cell##&\cell##&\cell##\vrule height\onerow\cr
+    \rows}}}\medskip\special{color pop}}
 
-\def\textproblem#1\answer#2{\problem #1\smallskip
-\line{\dotfill}\smallskip
-\line{\dotfill}\smallskip
-\line{\dotfill}\smallskip
-\answer{#2}}
+\newbox\problembox 
+\def\problem#1\answer#2{%
+  \setbox\problembox\vbox{#1\medskip}
+  \gridheight=0.46\vsize
+  \advance\gridheight by-\ht\problembox
+  \bigskip
+  \unvbox\problembox
+  \mathgrid}
 
 
-\problem This is a problem.
+\problem QUIC is a new reliable and secure transport protocol 
+that is suitable for a protocol like HTTP and that can address 
+some of the known shortcomings of doing HTTP/2 over TCP and 
+TLS.
+\answer{2}
 
-\problem This is a problem with answer.
-\answer{32}
 
-\textproblem And this is a text
-problem with answer. \answer{654kg}
+\problem QUIC is a new reliable and secure transport protocol 
+that is suitable for a protocol like. 
+\answer{3}
+
+\vfill\eject
+
+\problem QUIC is a new reliable and secure transport protocol.
+\answer{3}
+
+\problem QUIC is a new reliable and secure transport protocol 
+that is suitable for a protocol like HTTP and that can address 
+some of the known shortcomings of doing HTTP/2 over TCP and 
+TLS.
+\answer{2}
+
+
+
 
 \bye
