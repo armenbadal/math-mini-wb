@@ -1,0 +1,32 @@
+% A6 էջի չափերը
+\pdfpagewidth=105mm
+\pdfpageheight=148.5mm
+
+\hsize=79mm
+\vsize=115mm
+
+\hoffset=-12.4mm
+\voffset=-12.4mm
+
+\parindent=0pt
+
+\def\problem{%\vfill\eject
+  \noindent{\bf 1.}~}
+\def\answer#1{{\it #1}, }
+
+\def\textproblem#1\answer#2{\problem #1\smallskip
+\line{\dotfill}\smallskip
+\line{\dotfill}\smallskip
+\line{\dotfill}\smallskip
+\answer{#2}}
+
+
+\problem This is a problem.
+
+\problem This is a problem with answer.
+\answer{32}
+
+\textproblem And this is a text
+problem with answer. \answer{654kg}
+
+\bye

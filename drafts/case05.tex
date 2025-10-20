@@ -1,0 +1,80 @@
+% A6 էջի չափերը
+\pdfpagewidth=105mm
+\pdfpageheight=148.5mm
+
+\hsize=79mm
+\vsize=115mm
+
+\hoffset=-12.4mm
+\voffset=-12.4mm
+
+\parindent=0pt
+
+\newcount\problemno \problemno=0
+\def\problem#1{\vfill\eject%
+  \advance\problemno by1%
+  \medskip\noindent{\bf\the\problemno.}~#1}
+
+\def\mathgrid{
+  \centerline{\vbox{\halign{##&##&##\cr
+  a&b&c\cr
+  a&b&c\cr
+  a&b&c\cr}}}}
+
+\newwrite\ansf
+\immediate\openout\ansf=\jobname.ans.tex
+\def\textproblem#1\answer#2{%
+  \problem #1
+  \smallskip\mathgrid
+  \line{{\it Ans.} \dotfill\null}
+  \immediate\write\ansf{\noexpand\ans{\the\problemno}{#2}}}
+
+\textproblem A piece of cardboard is 2 mm thick. Suppose it was
+folded in half, then folded in half again, and folded
+in half once more. How thick is the folded piece of
+cardboard? \answer{6}
+
+\problem A piece of cardboard is 2 mm thick. Suppose it was
+folded in half, then folded in half again, and folded
+in half once more. How thick is the folded piece of
+cardboard?
+
+\textproblem A piece of cardboard is 2 mm thick. Suppose it was
+folded in half, then folded in half again, and folded
+in half once more. How thick is the folded piece of
+cardboard? \answer{44}
+
+\textproblem A piece of cardboard is 2 mm thick. Suppose it was
+folded in half, then folded in half again, and folded
+in half once more. How thick is the folded piece of
+cardboard? \answer{6 kg}
+
+\textproblem A piece of cardboard is 2 mm thick. Suppose it was
+folded in half, then folded in half again, and folded
+in half once more. How thick is the folded piece of
+cardboard? \answer{6 kg}
+
+\textproblem A piece of cardboard is 2 mm thick. Suppose it was
+folded in half, then folded in half again, and folded
+in half once more. How thick is the folded piece of
+cardboard? \answer{6 kg}
+
+\textproblem A piece of cardboard is 2 mm thick. Suppose it was
+folded in half, then folded in half again, and folded
+in half once more. How thick is the folded piece of
+cardboard? \answer{3mm}
+
+\textproblem A piece of cardboard is 2 mm thick. Suppose it was
+folded in half, then folded in half again, and folded
+in half once more. How thick is the folded piece of
+cardboard? \answer{5h 10m}
+
+\vfill\eject
+{\bf Answers}
+
+\def\ans#1#2{{\bf #1}.~{\it #2\/}: }
+
+\immediate\closeout\ansf
+\input \jobname.ans.tex
+
+\bye

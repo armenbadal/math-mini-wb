@@ -30,7 +30,7 @@
 \font\armfivebf="GHEAGrapalat/B:mapping=tex-text" at 5pt
 
 \def\tenpoint{\def\hy{\fam0\armtenrm}%
-  \textfont0=\armtenrm \scriptfont0=\armsevenrm \scriptscriptfont0=\armfiverm
+  %\textfont0=\armtenrm \scriptfont0=\armsevenrm \scriptscriptfont0=\armfiverm
   \def\it{\fam\itfam\armtenit} \textfont\itfam=\armtenit
   \def\bf{\fam\bffam\armtenbf} \textfont\bffam=\armtenbf
     \scriptfont\bffam=\armsevenbf \scriptscriptfont\bffam=\armfivebf
@@ -39,7 +39,7 @@
   \normalbaselines\hy}
 
 \def\ninepoint{\def\hy{\fam0\armninerm}%
-  \textfont0=\armninerm \scriptfont0=\armsixrm \scriptscriptfont0=\armfiverm
+  %\textfont0=\armninerm \scriptfont0=\armsixrm \scriptscriptfont0=\armfiverm
   \def\it{\fam\itfam\armnineit} \textfont\itfam=\armnineit
   \def\bf{\fam\bffam\armninebf} \textfont\bffam=\armninebf
     \scriptfont\bffam=\armsixbf \scriptscriptfont\bffam=\armfivebf
@@ -60,10 +60,16 @@
   {\bf \the\problemcount.}~}
 
 \newwrite\ansf
-\immediate\openout\ansf=\jobname.answers.tex
-\def\answer#1{\immediate\write\ansf{\the\problemcount. {\noexpand\it #1}}%
-  \immediate\write\ansf{}%
-  \medskip\mathgrid\medskip\line{Պատասխան՝\dotfill\null}}
+\immediate\openout\ansf=\jobname.ans.tex
+\def\answer#1{%
+  \immediate\write\ansf{\the\problemcount. {\noexpand\it #1}}%
+  \immediate\write\ansf{}}
+
+\def\textproblem#1\answer#2{%
+  \problem #1
+  \medskip\mathgrid
+  \medskip\line{Պատ.՝\dotfill\null}
+  \answer{#2}}
 
 \newdimen\onerow \onerow5mm
 \newdimen\freespace
