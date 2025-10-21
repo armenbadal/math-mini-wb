@@ -10,4 +10,21 @@
 
 lines = \the\linecount
 
+
+\problem Նկարել սլաքները նշված ժամերի համար։
+
+\def\analogclock{{\XeTeXpicfile figures-1.png width 2.7cm}}
+
+\bigskip
+\centerline{\vbox{\halign{\hss#\hss&\quad#\quad&\hss#\hss\cr
+\analogclock&&\analogclock\cr
+13:15&&20:00\cr
+\noalign{\bigskip}
+\analogclock&&\analogclock\cr
+10:55&&18:20\cr
+\noalign{\bigskip}
+\analogclock&&\analogclock\cr
+00:05&&3:45\cr}}}
+
+
 \bye

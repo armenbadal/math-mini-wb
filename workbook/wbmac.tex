@@ -65,33 +65,33 @@
   \immediate\write\ansf{\the\problemcount. {\noexpand\it #1}}%
   \immediate\write\ansf{}}
 
+\newbox\problembox
 \def\textproblem#1\answer#2{%
-  \problem #1
-  \medskip\mathgrid
-  \medskip\line{Պատ.՝\dotfill\null}
-  \answer{#2}}
+  \advance\problemcount by1%
+  \setbox\problembox\vbox{{\bf \the\problemcount.}~#1\medskip}
+  \gridheight=0.46\vsize
+  \advance\gridheight by-\ht\problembox
+  \bigskip
+  \unvbox\problembox
+  \mathgrid\answer{#2}}
 
+% մաթեմատիկական վանդակներ
 \newdimen\onerow \onerow5mm
-\newdimen\freespace
-\newbox\mathcell
-\setbox\mathcell=\hbox{\vbox{\hrule width \onerow height 0pt}}
-\def\cell{\vrule\copy\mathcell}
+\newdimen\gridheight
 \def\mathgrid{%
-  \freespace\vsize
-  \advance\freespace by -\pagetotal
-  \advance\freespace by -4\onerow
   \def\rows{\noalign{\hrule}}
   \loop
     \edef\rows{\rows &&&&&&&&&&&&&&\cr\noalign{\hrule}}
-    \advance\freespace by -\onerow
-  \ifnum\freespace>0\repeat
+    \advance\gridheight by -\onerow
+  \ifnum\gridheight>\onerow\repeat
   \bigskip\special{color push rgb 0.5 0.5 0.5}
+  \def\cell{\vrule\hbox{\vbox{\hrule width \onerow height 0pt}}}
   \centerline{\vbox{\halign{
     \cell##&\cell##&\cell##&\cell##&%
     \cell##&\cell##&\cell##&\cell##&%
     \cell##&\cell##&\cell##&\cell##&%
     \cell##&\cell##&\cell##\vrule height\onerow\cr
-    \rows}}}\medskip\special{color pop}}
+    \rows}}}\special{color pop}\medskip}
 
 \tenpoint
 
