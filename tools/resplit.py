@@ -5,17 +5,24 @@ __MAX_LENGTH = 170
 
 __TEX_PROBLEM = '\\textproblem {0}\\answer{{_}}'
 
-def resplit(infile, width=50):
+def resplit(infile, pattern='{}', width=50):
+    problemcount = 0
     with open(infile, 'r', encoding='UTF-8') as inf:
         while True:
             text, length = read_one(inf)
             if length == 0:
                 break
-            if length < __MIN_LENGTH or length > __MAX_LENGTH:
-                continue
-            splitted = reformat_one(text, width=width)
+            if length < __MIN_LENGTH:
+                print(f'%% small ({length})')
+            elif length > __MAX_LENGTH:
+                print(f'%% big ({length})')
+            else:
+                print(f'%% normal ({length})')
+            splitted = reformat_one(text, pattern='{}', width=width)
+            problemcount += 1
             print(splitted)
             print()
+        print(problemcount)
 
 def reformat_one(text, pattern='{}', width=40):
     splitted = split_with_width(pattern.format(text), width)
@@ -59,4 +66,4 @@ def split_one(text, width=40):
 
 
 if __name__ == '__main__':
-    resplit(sys.argv[1], 50)
+    resplit(sys.argv[1], width=50)
