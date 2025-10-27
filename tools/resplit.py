@@ -5,24 +5,40 @@ __MAX_LENGTH = 170
 
 __TEX_PROBLEM = '\\textproblem {0}\\answer{{_}}'
 
-def resplit(infile, pattern='{}', width=50):
+def resplit(infile, outfile, pattern='{}', width=50):
+    problems = read_and_process(infile, pattern, width)
+    with open(outfile, 'w', encoding='utf-8') as outf:
+        for problem in problems:
+            text, index, grade = problem
+            outf.write(grade)
+            outf.write('\n')
+            outf.write(text)
+            outf.write('\n\n')
+
+
+def read_and_process(infile, pattern='{}', width=50):
     problemcount = 0
+    problems = []
     with open(infile, 'r', encoding='UTF-8') as inf:
         while True:
             text, length = read_one(inf)
             if length == 0:
                 break
-            if length < __MIN_LENGTH:
-                print(f'%% small ({length})')
-            elif length > __MAX_LENGTH:
-                print(f'%% big ({length})')
-            else:
-                print(f'%% normal ({length})')
+
+            grade = grade_by_size(length)
             splitted = reformat_one(text, pattern='{}', width=width)
             problemcount += 1
-            print(splitted)
-            print()
-        print(problemcount)
+            problems.append((splitted, problemcount, grade))
+    return problems
+
+def grade_by_size(length):
+    if length < __MIN_LENGTH:
+        return f'%% small ({length})'
+
+    if length > __MAX_LENGTH:
+        return f'%% big ({length})'
+
+    return f'%% normal ({length})'
 
 def reformat_one(text, pattern='{}', width=40):
     splitted = split_with_width(pattern.format(text), width)
@@ -66,4 +82,4 @@ def split_one(text, width=40):
 
 
 if __name__ == '__main__':
-    resplit(sys.argv[1], width=50)
+    resplit(sys.argv[1], sys.argv[2], width=50)
